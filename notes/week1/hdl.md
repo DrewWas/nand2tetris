@@ -83,11 +83,47 @@
     - Inspect resulting values (of both output pins and internal pins)
 
 
+    - Every time you edit the hdl file, you must save it and reload the hardware
+      simulator
+
+
+    - It looks like making tests scripts is actually hella easy
+        - Allows for automatic testing and replicable testing (redundancy)
+
+
+    - We can also instruct the simulator to create an output file which will create
+      a new file with the results of running the test script along with the
+      correlating inputs for that output (basically just creates a truth-table file)
 
 
 
+    - .cmp files are compare files that hold the correct truth-table for the desired
+      chip and is meant to be compared with the output file to see which step the
+      chip is fucking up on
 
 
+
+# Unit 1.6: Mulit-Bit Buses
+    - Often, we want to manipulate "together" multiple bits 
+        - We want to treat them as a single unit
+    
+    - It is conceptually convenient to think about such a group of bits as a single
+      entity, sometimes referred to as a 'bus'
+        - HDLs provide convenient notation for handling these buses
+
+    - Ex: A 16 bit adder, where each input (a and b), and the output (out) are 16
+      bits each
+        - It has 32 'wires' going in and 16 going out
+
+    - In our hdl software, we can say IN a[16] for input a with 16 bits
+        - Then to access individual bits beneath the PARTS: syntax, we can say
+          a=a[0] to indentify the first bit in a
+
+    - Buses can be broken into sub-buses
+        - Notation: a[0..7]=lsb --> bites 1-8 of a and maps them to the name lsb
+
+
+    - AND & OR gates must take in the same # of bits/same bus lengths
 
 
 
