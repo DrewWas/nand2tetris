@@ -65,8 +65,64 @@
 
 # Unit 1.2: Boolean Functions Synthesis 
 
+* Constructing boolean functions from primitive operations
+
+    - We can represent boolean functions with both boolean expressions and truth
+      tables 
+
+    - Now we will do the inverse. Given a truth table, we must create a matching
+      boolean function
 
 
+
+    - To do this, we go through each row one by one. Starting at the first row that
+      evaluates to 1
+    - In this row, we create an expression that would evaluate to 1 (because it IS a
+      1)
+    - We do this for each row that has a value of 1
+    - Now, each row with a 1 should have its own individual function that results in
+      a 1 after evaluation
+    - Then, to create an overarching function, simply OR all these individual
+      functions together
+    - Then, simplify if possible with boolean algebra laws
+
+
+* Any boolean function can be created using an expression containing AND, NOT, & OR
+
+    - All computers are built from these 3 boolean operations 
+    - However, because we can create an OR from AND & NOT (De Morgan's Laws), we
+      really only need AND & NOT
+
+    - There is however, a single operation that can be used to create all other
+      operations: The NAND function
+    - NAND --> (x NAND y) --> 0 if both are 1, else 1
+    - NAND = NOT(x and y)
+
+
+
+
+* Any boolean function can be created using an expression containing only NAND (WOW)
+
+
+
+# Unit 1.3: Logic Gates 
+
+* Gate Logic
+    - A technique for implementing Boolean functions using logic gates
+
+    - A logic gate is a combination of boolean expressions used to deliver a
+      well-defined functionality 
+
+        - Elementary Logic Gates: NAND, AND, OR, NOT, etc.
+        - Composite Logic Gates (More Complex): MUX, ADDER, etc.
+            - Can take > 2 inputs (unlike elementary logic gates)
+
+
+* Circuit Implementations
+    - Logic Gates are literally just circuits
+
+    - Circuits, transistors, relays, etc. are EE, not CS, therefore we will not go
+      deep into them in this course
 
 
 
