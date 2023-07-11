@@ -52,20 +52,19 @@ CHIP ALU {
     Mux16 (a=notzxout, b=zxout, sel=nx, out=nzxout);
     Mux16 (a=notzyout, b=zyout, sel=ny, out=nzyout);
 
+
     Add16 (a=nzxout, b=nzyout, out=add16out);
     And16 (a=nzxout, b=nzyout, out=and16out);
 
     Mux16 (a=add16out, b=and16out, sel=f, out=fout);
     Not16 (in=fout, out=notfout);
 
-    Mux16 (a=notfout, b=fout, sel=no, out=out); 
-    Mux16 (a=notfout, b=fout, sel=no, out=nout);
+    Mux16 (a=notfout, b=fout, sel=no, out=lastout, out=out); 
 
-    Or (a=nout[15], b=false, out=ng);
+    Or16 (a=lastout, b[0..15]=false, out[15]=ng);
 
-    Or16 (a=nout[0..15], b=nout[0..15], out=or16out);
-    Not16 (in=or16out, out=zr); 
-
+    Or16 (a=lastout, b=lastout, out=or16out);
+    Not16 (in=or16out, out[15]=zr); 
 
 
 }
