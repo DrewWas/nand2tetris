@@ -18,36 +18,28 @@ D = M
 @i
 M = D // i = R1
 
-
 @R0
-D = M
-@R2
-M = D
 @END
-D ; JEQ // If R0 = 0, set R2 = 0 and jump to end
-
-
-@R1
-D = M
-@R2
-M = D
-@END 
-D ; JEQ // If R1 = 0, set R2 = 0 and jump to end
+M ; JEQ // If R0 = 0, end
 
 
 (LOOP)
+   @i
+   @END
+   M ; JEQ  // If i = 0, end
 
-  @R0
-  A = M
-  @R2
-  D = M
-  M = D + A
-// Set R2 = R2 + R0
+   // else
 
+   @R1
+   D = M
+   @R2
+   A = M
+   M = D + A  // R2 = R1 
 
-// i -= 1
-// If i > 0, go back to loop
-
+   @i 
+   M = M - 1 // i -= 1
+   // back to loop
+   @LOOP 
 
 (END) 
   @END
