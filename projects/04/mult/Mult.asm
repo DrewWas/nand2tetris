@@ -11,40 +11,45 @@
 
 // Put your code here.
 
-// This is a non-destructive implementation
-
 @R1
 D = M
 @i
-M = D // i = R1
+M = D          // i = R1
+
+@R2
+M = 0          // Set R2 = 0
+
 
 @R0
+D = M
 @END
-M ; JEQ // If R0 = 0, end
+D ; JEQ        // Go to end if R0 = 0
 
+@R1
+D = M
+@END
+D ; JEQ        // Go to end if R1 = 0 
 
 (LOOP)
-   @i
-   @END
-   M ; JEQ  // If i = 0, end
+  @R0
+  D = M
+  @R2
+  M = M + D    // R2 = R2 + R0
 
-   // else
+  @i
+  M = M - 1
+  D = M        // i -= 1
+  @LOOP
+  D ; JGT      // Jump back to start of loop if i > 0
 
-   @R1
-   D = M
-   @R2
-   A = M
-   M = D + A  // R2 = R1 
 
-   @i 
-   M = M - 1 // i -= 1
-   // back to loop
-   @LOOP 
-
-(END) 
   @END
-  0 ; JMP
+  0 ; JMP      // If loop exited, go to end 
 
+
+(END)
+   @END
+   0 ; JMP
 
 
 
