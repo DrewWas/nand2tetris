@@ -10,3 +10,54 @@
 // R0 >= 0, R1 >= 0, and R0*R1 < 32768.
 
 // Put your code here.
+
+// This is a non-destructive implementation
+
+@R1
+D = M
+@i
+M = D // i = R1
+
+
+@R0
+D = M
+@R2
+M = D
+@END
+D ; JEQ // If R0 = 0, set R2 = 0 and jump to end
+
+
+@R1
+D = M
+@R2
+M = D
+@END 
+D ; JEQ // If R1 = 0, set R2 = 0 and jump to end
+
+
+(LOOP)
+
+  @R0
+  A = M
+  @R2
+  D = M
+  M = D + A
+// Set R2 = R2 + R0
+
+
+// i -= 1
+// If i > 0, go back to loop
+
+
+(END) 
+  @END
+  0 ; JMP
+
+
+
+
+
+
+
+
+
