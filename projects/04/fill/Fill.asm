@@ -32,11 +32,35 @@ D = A - 1
 @i
 M = D       // Set R16 = i = 1111111111111111
 
+//load KBD
+// if != 0, jump to draw
+// else, jump PAST draw
 
+(START)
+@KBD
+D = M
+@DRAW
+D ; JNE
+
+@CLEAR
+D ; JEQ
+
+
+(DRAW)  // do this for all SMM
 @i
 D = M
 @SCREEN
-M = D      // Set SCREEN[0] = i
+M = D
+@KBD
+D = M
+@DRAW
+D ; JNE
+
+
+
+(CLEAR)
+@SCREEN
+M = 0
 
 
 
