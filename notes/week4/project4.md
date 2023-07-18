@@ -23,7 +23,6 @@
 
 	- Has to be updated every time step
 
-
 	- Have to be able to see if any key is pressed (2 or8s and an or between those two or8s)
 	- Have to be able to draw the entire screen black
 

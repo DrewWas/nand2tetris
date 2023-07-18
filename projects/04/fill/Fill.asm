@@ -12,3 +12,37 @@
 // the screen should remain fully clear as long as no key is pressed.
 
 // Put your code here.
+
+// Idea -->
+// If KBD - 1 
+
+// Jump back to start of program
+
+
+
+// Question / Test 1: How do we know if the keyboard is being used
+
+// Question / Test 2: How do we fill the entire screen
+
+// !!! Each RAM[n] is a 16-bit bus !!!
+
+
+@R0
+D = A - 1
+@i
+M = D       // Set R16 = i = 1111111111111111
+
+
+@i
+D = M
+@SCREEN
+M = D      // Set SCREEN[0] = i
+
+
+
+
+
+
+
+
+
