@@ -32,41 +32,28 @@ D = A - 1
 @i
 M = D       // Set R16 = i = 1111111111111111
 
-//load KBD
-// if != 0, jump to draw
-// else, jump PAST draw
 
 (START)
-@KBD
-D = M
-@DRAW
-D ; JNE
+@KBD       // Load M = RAM[KBD]
 
-@CLEAR
-D ; JEQ
+@PRESSED
+M ; JNE
 
+@NotPressed
+M ; JEQ 
 
-(DRAW)  // do this for all SMM
+(Pressed)
 @i
 D = M
 @SCREEN
 M = D
-@KBD
-D = M
-@DRAW
-D ; JNE
 
-
-
-(CLEAR)
+(NotPressed)
 @SCREEN
 M = 0
 
-
-
-
-
-
+@START
+0 ; JMP
 
 
 
