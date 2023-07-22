@@ -35,17 +35,22 @@ D = A
 @SMM
 M = D      // Set R17 = Reg # SMM starts at 
 
-(LOOP)
+
+(BLACKOUT)
 @i
 D = M
 @SMM
-@A__       // Figure it the fuck out
+A = M
 M = D
+
+
+
 
 @SMM
 M = M+1   // SMM += 1
 
 
-@LOOP
+//@LOOP
+@BLACKOUT
 0 ; JMP
 
