@@ -27,33 +27,25 @@
 // !!! Each RAM[n] is a 16-bit bus !!!
 
 
-@R0
-D = A - 1
 @i
-M = D       // Set R16 = i = 1111111111111111
+M = -1      // Set R16 = i = 1111111111111111
 
+@SCREEN
+D = A
+@SMM
+M = D      // Set R17 = Reg # SMM starts at 
 
-(START)
-@KBD       // Load M = RAM[KBD]
-
-@PRESSED
-M ; JNE
-
-@NotPressed
-M ; JEQ 
-
-(Pressed)
+(LOOP)
 @i
 D = M
-@SCREEN
+@SMM
+@A__       // Figure it the fuck out
 M = D
 
-(NotPressed)
-@SCREEN
-M = 0
+@SMM
+M = M+1   // SMM += 1
 
-@START
+
+@LOOP
 0 ; JMP
-
-
 
