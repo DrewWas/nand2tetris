@@ -33,24 +33,38 @@ D = A
 M = D      // Set R17 = Reg # SMM starts at 
 
 
-
+(LOOP)
+// if key down jump to blackout, else jump to whiteout
+@KBD
+D = M
+@BLACKOUT
+//M ; JNE   //fuck up??
+D ; JNE
+@WHITEOUT
+//M ; JEQ   //fuck up??
+D ; JEQ
 
 (BLACKOUT)
 @SMM
 A = M
 M = -1     // M @ A = -1
-
-//(WHITEOUT)
-//@SMM
-//A = M
-//M = 0
-
-
 @SMM
-M = M+1   // SMM += 1
+M = M+1
+@LOOP
+0 ; JMP        // Go back to start of loop
+
+(WHITEOUT)
+@SMM
+A = M
+M = 0
+@SMM
+M = M+1
+@LOOP
+0 ; JMP       // Go back to start of loop
 
 
-//@LOOP
-@BLACKOUT
+
+
+@LOOP
 0 ; JMP
 
