@@ -26,11 +26,12 @@
 
 // !!! Each RAM[n] is a 16-bit bus !!!
 
-
+(RESET)
 @SCREEN
 D = A
 @SMM
 M = D      // Set R17 = Reg # SMM starts at 
+
 
 
 (LOOP)
@@ -38,10 +39,8 @@ M = D      // Set R17 = Reg # SMM starts at
 @KBD
 D = M
 @BLACKOUT
-//M ; JNE   //fuck up??
 D ; JNE
 @WHITEOUT
-//M ; JEQ   //fuck up??
 D ; JEQ
 
 (BLACKOUT)
@@ -50,8 +49,17 @@ A = M
 M = -1     // M @ A = -1
 @SMM
 M = M+1
-@LOOP
-0 ; JMP        // Go back to start of loop
+
+
+@KBD
+D = M
+@RESET
+D ; JEQ
+@BLACKOUT
+D ; JNE
+
+
+
 
 (WHITEOUT)
 @SMM
