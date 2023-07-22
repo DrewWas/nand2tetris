@@ -27,23 +27,23 @@
 // !!! Each RAM[n] is a 16-bit bus !!!
 
 
-@i
-M = -1      // Set R16 = i = 1111111111111111
-
 @SCREEN
 D = A
 @SMM
 M = D      // Set R17 = Reg # SMM starts at 
 
 
+
+
 (BLACKOUT)
-@i
-D = M
 @SMM
 A = M
-M = D
+M = -1     // M @ A = -1
 
-
+//(WHITEOUT)
+//@SMM
+//A = M
+//M = 0
 
 
 @SMM
