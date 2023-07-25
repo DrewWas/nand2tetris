@@ -70,6 +70,29 @@
 
 # Unit 5.6: Perspectives
 
+	- Having a seperate RAM and ROM is sometimes known as a Harvard Architecture
+
+		- As opposed to the Von Neumann architecture where there is just one big memory and you need a multiplexor to
+		  determine if the memory you want to access is data or program memory
+
+		- Some people, however, view the Harvard architecture as a 'flavor' or subset of the Von Neumann Architecture
+
+
+	- This architecture is fine for our purposes and many embedded systems
+		- We choose the Harvard Architecture because it is a bit easier to implement
+
+
+
+	- *In the Von Neumann architecture, we expect the computer to do different things at different cycles
+		- This can be modeled by a Finite State Machine
+
+
+	- How do we add more peripheral devices?
+		- Set aside more blocks of memory that can serve to hold the data from these other Inputs (ex: microphone)
+
+	- It is hard to have a lot of peripheral devices, however, because the CPU has to manage all of their sub-storages in
+	  the data memory (like the SMM and KMM)
+		- A solution to this is to utilize a device controler which is dedicated hardware to manage the disk
 
 
 
