@@ -40,21 +40,19 @@ CHIP CPU {
 
     PARTS:
 
-    /* Instruction Handling 
-    Mux16(a=instruction, b=outM, sel=instruction[15], out=mux1out);
-    Register(in=mux1out, load=true, out[0..14]=addressM);
-    THIS IS ALL CORRECT
-    */
+    /* Instruction Handling
+    Mux16(a=instruction, b=aluOUT, sel=instruction[15], out=mux1out);
+    Register(in=mux1out, load=true, out[0..14]=AREGout, out[0..14]=addressM);
+    THIS IS ALL CORRECT!!!! */
 
     /* ALU Operation */
 
 
-    /* Control 
+    /* Control
     Not(in=reset, out=notReset);
-    PC(in=addressM, load=true, inc=notReset, reset=reset, out=pc);
+    PC(in[15]=instruction[15],in[0..14]=AREGout, load=instruction[15], inc=notReset, reset=reset, out[0..14]=pc);
+    THIS IS ALL CORRECT!!!!
     */
-
-
 }
 
 
