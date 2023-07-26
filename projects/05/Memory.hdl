@@ -28,12 +28,29 @@ CHIP Memory {
 
     PARTS:
     /* This is just the RAM/SMM/KMM. The ROM is assumed to be given externally */
+    XOr(a=address[15], b=address[14], out=addressXor);
+    And(a=address[15], b=address[14], out=addressAnd);
 
-    RAM16K(in=in, load=load, address=address, out=RAMout);
-    RAM8K(in=in, load=load, address=address, out=SMMout);
-    Register(in=in, load=load, out=KBDout);
+    And(a=addressXor, b=load, out=thisSMM);
+    And(a=addressAnd, b=load, out=thisKBD);
+
+    Not(in=SMM, out=notSMM);
+    Not(in=KBD, out=notKBD);
+    And(a=notSMM, b=notKBD, out=thisRam);
 
 
+    RAM16K (in=in, load=thisRam, address=address, out=ramOut);
+    RAM8K (in=in, load=thisSMM, address=address, out=smmOut);
+    Register (in=in, load=thisKBD, out=kbdOut);
+
+
+    DMux4Way(a=ramOut, b=smmOut, c=smmOut, d=kbdOut, sel=, out=out);
 
 
 }
+
+
+
+
+
+
