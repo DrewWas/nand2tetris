@@ -27,5 +27,13 @@ CHIP Memory {
     OUT out[16];
 
     PARTS:
-    // Put your code here:
+    /* This is just the RAM/SMM/KMM. The ROM is assumed to be given externally */
+
+    RAM16K(in=in, load=load, address=address, out=RAMout);
+    RAM8K(in=in, load=load, address=address, out=SMMout);
+    Register(in=in, load=load, out=KBDout);
+
+
+
+
 }
